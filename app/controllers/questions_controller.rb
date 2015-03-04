@@ -15,6 +15,12 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   def new
     @question = Question.new
+
+    if params[:test_id]
+      #@question.tests<< Test.find(params[:test_id])
+      render 'new_question'
+    end
+
   end
 
   # GET /questions/1/edit
