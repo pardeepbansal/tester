@@ -17,8 +17,9 @@ class QuestionsController < ApplicationController
     @question = Question.new
 
     if params[:test_id]
-      #@question.tests<< Test.find(params[:test_id])
-      render 'new_question'
+      @test = Test.find(params[:test_id])
+      @question = @test.questions.build
+      render 'qt/new_question'
     end
 
   end
@@ -30,17 +31,26 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(question_params)
 
-    respond_to do |format|
-      if @question.save
-        format.html { redirect_to @question, notice: 'Question was successfully created.' }
-        format.json { render :show, status: :created, location: @question }
-      else
-        format.html { render :new }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
-      end
+    if params[:test_id]
+      @test = Test.find(params[:test_id])
+      @question = Question.new(question_params)
+      @question.tests  << @test
+             if @question.save
+              redirect_to test_url(@test)
+            else
+              render 'qt/new_question'
+            end
+    else 
+      @question = Question.new(question_params)
+             if @question.save
+              redirect_to @question, notice: 'Question was successfully created.'
+            else 
+              render :new
+            end
+
     end
+    
   end
 
   # PATCH/PUT /questions/1

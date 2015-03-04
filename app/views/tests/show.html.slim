@@ -4,8 +4,8 @@ p
   strong Title:
   = @test.title
 p
-  strong Description:
-  = @test.description
+	strong Description:
+	= @test.description
 
 = link_to 'Edit', edit_test_path(@test)
 '|
@@ -13,3 +13,13 @@ p
 
 '|
 = link_to 'Add Questions', new_test_question_path(@test)
+
+p 
+	=@test.id
+p
+	-if @test.questions.any?
+		-@test.question.each do |question|
+			question.title.truncate(30)
+		else
+			This test has no questions
+
