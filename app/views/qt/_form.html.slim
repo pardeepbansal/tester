@@ -1,4 +1,4 @@
-= simple_form_for([@test,@question]) do |f|
+= simple_form_for @question ,url: createquestion_path do |f|
   = f.error_notification
 
   .form-inputs
@@ -9,7 +9,9 @@
     = f.input :d
     = f.input :e
     = f.input :answer ,priority: [ "d" ],collection: %w( a b c d e)
+    = f.input :test_id , as: :hidden , input_html: {value: @test.id}
 
   .form-actions
     = f.button :submit
+    = f.button :submit ,'Save And New'
 

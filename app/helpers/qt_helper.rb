@@ -1,0 +1,2 @@
+module QtHelper
+end

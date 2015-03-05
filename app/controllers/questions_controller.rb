@@ -16,10 +16,10 @@ class QuestionsController < ApplicationController
   def new
     @question = Question.new
 
+    #if params contain test_id pass it to qts controller
     if params[:test_id]
-      @test = Test.find(params[:test_id])
-      @question = @test.questions.build
-      render 'qt/new_question'
+      test_id = params[:test_id]
+      redirect_to newquestion_path(test_id)
     end
 
   end
