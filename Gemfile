@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'devise'
+gem 'rails_admin'
 gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'slim-rails'

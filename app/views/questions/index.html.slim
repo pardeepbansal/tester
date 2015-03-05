@@ -17,7 +17,7 @@ table
   tbody
     - @questions.each do |question|
       tr
-        td = question.title
+        td = question.title.truncate(80)
         td = question.a
         td = question.b
         td = question.c
