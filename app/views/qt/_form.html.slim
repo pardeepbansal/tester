@@ -8,7 +8,7 @@
     = f.input :c
     = f.input :d
     = f.input :e
-    = f.input :answer ,collection: %w( a b c d e)
+    = f.input :answer ,priority: [ "d" ],collection: %w( a b c d e)
 
   .form-actions
     = f.button :submit

@@ -1,0 +1,20 @@
+<p>
+	<strong>Title</strong>
+</p>
+
+<p>
+	<%= @test.title %>
+</p>
+
+<p><strong>Description</strong></p>
+<p><%= @test.description %></p>
+
+<%= link_to 'Edit', edit_test_path(@test) %> |
+
+<%= link_to 'Back', tests_path %> |
+
+<%= link_to 'Add Questions', new_test_question_path(@test) %>
+
+<p>
+	<%= "This Test has #{@test.questions.count} questions" %>
+</p>
